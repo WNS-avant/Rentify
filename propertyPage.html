@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Property</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #f8f9fa;
+            background-image: url('https://i.ibb.co/Yjjfkz7/blur.jpg');
+            background-size: cover; /* Cover the entire background */
+        	background-repeat: no-repeat;
+        }
+
+        .container {
+            margin-top: 30px;
+            margin-bottom:30px;
+            max-width: 600px;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            backdrop-filter:blur(10px);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            font-weight: bold;
+        }
+
+        .form-control {
+            border-radius: 5px;
+            border: 1px solid #ced4da;
+        }
+
+        .form-control:focus {
+            border-color: #007bff;
+            box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            border: none;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+
+        .btn-block {
+            display: block;
+            width: 100%;
+        }
+
+        footer {
+            background-color: #343a40;
+            color: snow;
+            padding: 20px 0;
+            text-align: center;
+            margin-top: auto;
+            width: 100%;
+        }
+
+        footer p {
+            margin-bottom: 5px;
+        }
+
+        footer a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        .hero-title {
+            color: #fff;
+            font-size: 36px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            text-align: center;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero-text {
+            color: #fff;
+            font-size: 18px;
+            margin-bottom: 30px;
+            text-align: center;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .btn-hero {
+            background-color: #f8f9fa;
+            color: #007bff;
+            border: 2px solid #007bff;
+            font-weight: bold;
+            padding: 10px 20px;
+            border-radius: 30px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+        }
+
+        .btn-hero:hover {
+            background-color: #007bff;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1 class="text-center hero-title">Add Property</h1>
+    <p class="text-center hero-text">Find your perfect rental property</p>
+    <form action="/addProperty" method="post" enctype="multipart/form-data">
+        <div class="form-group">
+            <label for="propertyImage">Property Image</label>
+            <input type="file" class="form-control-file" name="propertyImage" accept="image/*" required>
+        </div>
+        <div class="form-group">
+            <label for="propertyName">Property Name</label>
+            <input type="text" class="form-control" name="propertyName" placeholder="Enter Property Name" required>
+        </div>
+        <div class="form-group">
+            <label for="location">Location</label>
+            <input type="text" class="form-control" name="location" placeholder="Enter Location" required>
+        </div>
+        <div class="form-group">
+            <label for="area">Area (sq ft)</label>
+            <input type="number" class="form-control" name="area" placeholder="Enter Area (sq ft)" required>
+        </div>
+        <div class="form-group">
+            <label for="bedrooms">Bedrooms</label>
+            <input type="number" class="form-control" name="bedrooms" placeholder="Enter Number of Bedrooms" required>
+        </div>
+        <div class="form-group">
+            <label for="bathrooms">Bathrooms</label>
+            <input type="number" class="form-control" name="bathrooms" placeholder="Enter Number of Bathrooms" required>
+        </div>
+        <div class="form-group">
+            <label for="nearbyFacilities">Nearby Facilities</label>
+            <input type="text" class="form-control" name="nearbyFacilities" placeholder="Enter Nearby Facilities" required>
+        </div>
+        <div class="form-group">
+            <label for="price">Price (per month)</label>
+            <input type="number" class="form-control" name="price" placeholder="Enter Price (per month)" required>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block btn-hero">Add Property</button>
+    </form>
+    <a href="/sellerHome" class="btn btn-primary btn-block mt-3 btn-hero">Home Page</a>
+</div>
+<footer>
+    <div class="footer">
+        <p>&copy; 2024 Rentify. All rights reserved.</p>
+        <p>For inquiries, contact us at <a href="mailto:info@rentify.com">info@rentify.com</a></p>
+    </div>
+</footer>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,973 @@
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+xmlns:th="http://www.thymeleaf.org"
+xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rentify - Where Renting Meets Simplicity</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+<script>
+        window.onload = function () {
+            window.history.forward();
+        };
+    </script>
+</head>
+<style>
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.header {
+	background-image:url('https://i.ibb.co/bFvJhzL/orange.jpg');
+    color: #fff;
+    padding: 5px;
+    position: fixed;
+    border-radius:10px;
+    
+}
+
+.header .logo img {
+    max-width: 150px;
+}
+
+
+
+.header .header-actions {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.header .header-contact .contact-link {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.1em;
+    display: block;
+}
+
+.header .header-contact .contact-time {
+    color: #fff;
+    font-size: 0.9em;
+}
+
+.header .btn {
+    background-color: #fff;
+    color: #ffa500;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.header .btn:hover {
+    background-color: #ff7f00;
+    color: #fff;
+}
+
+.header .nav-toggle-btn {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 24px;
+    height: 18px;
+    cursor: pointer;
+}
+
+.header .nav-toggle-btn span {
+    display: block;
+    height: 2px;
+    background-color: #fff;
+}
+
+@media (max-width: 768px) {
+    .header .navbar {
+        display: block;
+    }
+
+    .header .nav-toggle-btn {
+        display: flex;
+    }
+
+    .header .navbar {
+        display: none;
+    }
+
+    .header .navbar[data-visible="true"] {
+        display: block;
+    }
+}
+
+.hero {
+	margin-top:100px;
+	position:relative;
+    background-color: #f4f4f4;
+    padding: 40px 0;
+    text-align: center;
+}
+
+.hero .hero-title {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
+.hero .hero-text {
+    font-size: 1.2em;
+    margin-bottom: 40px;
+}
+
+.hero .hero-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.hero .input-wrapper {
+    flex: 1 1 200px;
+}
+
+.hero .input-label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.hero .input-field {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.hero .btn {
+    background-color: #ffa500;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.hero .btn:hover {
+    background-color: #ff7f00;
+}
+
+.features {
+    padding: 40px 0;
+    text-align: center;
+}
+
+.features h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+.features .feature {
+    margin-bottom: 20px;
+}
+
+.features .feature h3 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+.features .feature p {
+    font-size: 1em;
+}
+
+.subscription {
+    background-color: #f4f4f4;
+    padding: 40px 0;
+    text-align: center;
+}
+.like-section {
+    display: flex;
+    align-items: center;
+}
+
+.like-button {
+    border: none;
+    background: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.like-button.liked {
+    color: red; 
+}
+
+.like-count {
+    margin-left: 5px;
+}
+
+
+.subscription h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+.subscription p {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+}
+
+.subscription form {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.subscription input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.subscription button {
+    background-color: #ffa500;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.subscription button:hover {
+    background-color: #ff7f00;
+}
+
+.carousel {
+    padding: 40px 0;
+    text-align: center;
+}
+
+.carousel h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+.carousel .carousel-container {
+    display: flex;
+    overflow-x: auto;
+    gap: 20px;
+    padding: 20px;
+}
+
+.carousel .card {
+    flex: 0 0 200px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    text-align: left;
+}
+
+.carousel .card img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.carousel .card h3 {
+    font-size: 1.2em;
+    margin-bottom: 5px;
+}
+
+.carousel .card p {
+    font-size: 1em;
+    margin: 0;
+}
+
+.image-section {
+    padding: 40px 0;
+    text-align: center;
+}
+
+.image-section img {
+    max-width: 100%;
+    height: auto;
+}
+
+footer {
+    background-color: #f4f4f4;
+    padding: 10px;
+    text-align: center;
+}
+
+/* Featured Property Styles */
+.featured-property-card {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s;
+}
+
+.featured-property-card:hover {
+  transform: translateY(-10px);
+}
+
+.card-banner {
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%;
+  overflow: hidden;
+}
+
+.card-banner img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.card-content {
+  padding: 20px;
+}
+
+.card-title-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.card-title {
+  font-size: 1.5em;
+  color: #333;
+}
+
+.card-title a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.card-list {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 15px;
+}
+
+.card-list-item {
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
+  font-size: 0.9em;
+  color: #666;
+}
+
+.card-list-item ion-icon {
+  margin-right: 5px;
+  color: #ffa500;
+}
+
+.card-price-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card-price {
+  font-size: 1.2em;
+  color: #333;
+}
+
+.btn {
+  background-color: #ffa500;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: #ff7f00;
+}
+
+.fav-btn {
+  margin-right: 10px;
+}
+
+.fav-btn ion-icon {
+  color: #ff7f00;
+}
+
+.featured-property-link {
+  display: flex;
+  align-items: center;
+  font-size: 1em;
+  color: #ffa500;
+  text-decoration: none;
+}
+
+.featured-property-link ion-icon {
+  margin-left: 5px;
+}
+.blog-carousel {
+  display: flex;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  margin-bottom: 20px; 
+}
+
+.blog-card {
+  flex: 0 0 auto;
+  width: 250px;
+  margin-right: 20px;
+}
+
+.blog-card:last-child {
+  margin-right: 0;
+}
+
+.card-banner img {
+  width: 100%;
+  height: auto;
+}
+
+.card-content {
+  padding: 15px;
+  background-color: #f9f9f9;
+}
+
+.card-title {
+  margin-top: 0;
+}
+
+.card-meta {
+  font-size: 14px;
+  color: #666;
+}
+
+.comments {
+  margin-left: 10px;
+}
+
+
+          .modal-dialog {
+            display: flex;
+            align-items: center;
+            min-height: calc(100% - 1rem);
+        }
+        .modal-content {
+            margin: auto;
+        }
+.open{
+margin:20px;
+}
+
+    #logout-form button {
+        padding: 10px 20px;
+        background-color: #ff0000; 
+        color: #ffffff; 
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s; 
+    }
+
+    #logout-form button:hover {
+        background-color: #cc0000; 
+    }
+
+
+</style>
+
+<body>
+ 
+<header class="header fixed-top" data-header>
+    <div class="container d-flex justify-content-between align-items-center">
+        <a href="#" class="logo">
+            <img src="https://i.ibb.co/vYMyRs3/Untitled-design-removebg-preview.png" alt="Rentify logo">
+        </a>
+<a id="open" class="btn btn-primary" href="/login" role="button">Switch User</a>
+        
+        <div class="header-actions">
+            <a href="#features" class="btn btn-primary" aria-labelledby="aria-label-txt">
+                Explore Properties
+            </a>
+            <a href="#blogs" class="btn btn-secondary" aria-label="Blogs">
+                Blogs
+            </a>
+            <a href="#subscription" class="btn btn-secondary" aria-label="Reach Out">
+                Reach Out
+            </a>
+   
+    
+            <form id="logout-form" action="/logout" method="post">
+    <button type="submit">Log out</button>
+</form>
+        </div>
+    </div>
+</header>
+
+
+
+    <main>
+        <h1>Welcome, <span th:text="${firstName}"></span>!</h1>
+        <section class="section hero" id="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h2 class="h1 hero-title">The easy way to find a rental property</h2>
+                    <p class="hero-text">Find your next home in Hyderabad, Bengaluru, and Chennnai!</p>
+                </div>
+                <div class="hero-banner"></div>
+                <form>
+					<button id="searchInput" onclick="searchProperties()">Search</button>                    <div class="input-wrapper">
+                        <label for="input-1" class="input-label">Location</label>
+                        <input type="text" name="location" id="input-1" class="input-field" placeholder="Where are you looking?">
+                    </div>
+                    <div class="input-wrapper">
+                        <label for="input-2" class="input-label">Max. monthly rent</label>
+                        <input type="text" name="monthly-rent" id="input-2" class="input-field" placeholder="Add an amount in ₹">
+                    </div>
+                    <div class="input-wrapper">
+                        <label for="input-3" class="input-label">Number of Bedrooms</label>
+                        <input type="text" name="bedrooms" id="input-3" class="input-field" placeholder="Add number of bedrooms">
+                    </div>
+                    <button type="submit" class="btn">Search</button>
+                </form>
+            </div>
+        </section>
+    
+     <!--  "From the seller to the buyer page"
+        <section class="section featured-property" id="featured-property">
+  <div class="container">
+    <div class="title-wrapper">
+      <h2 class="h2 section-title">Featured Properties</h2>
+      <a href="#" class="featured-property-link">
+        <span>View more</span>
+      </a>
+    </div>
+    <ul class="featured-property-list">
+      <li th:each="property : ${SellerProperties}">
+        <div class="container">
+          <h1 class="text-center">Properties for Sale</h1>
+          <div class="row">
+            <div class="col-md-4 mb-4">
+              <div class="card">
+                <img th:src="@{${property.propertyImage}}" class="card-img-top" alt="Property Image">
+                <div class="card-body">
+                  <h5 class="card-title" th:text="${property.propertyName}"></h5>
+                  <p class="card-text">Location: <span th:text="${property.location}"></span></p>
+                  <p class="card-text">Area: <span th:text="${property.area}"></span> sq ft</p>
+                  <p class="card-text">Bedrooms: <span th:text="${property.bedrooms}"></span></p>
+                  <p class="card-text">Bathrooms: <span th:text="${property.bathrooms}"></span></p>
+                  <p class="card-text">Nearby Facilities: <span th:text="${property.nearbyFacilities}"></span></p>
+                  <p class="card-text">Price: ₹<span th:text="${property.price}"></span> / month</p>
+                 <div class="property">
+    <div class="like-section">
+        <button class="like-button" onclick="toggleLike(this)">❤</button>
+        <span class="like-count">0</span>
+    </div>
+</div>
+
+                  </button>
+                  <button class="btn">Rent now</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>
+        
+--> 
+
+<!-- Property Section -->
+<section class="section featured-property" id="featured-property">
+  <div class="container">
+
+    <div class="title-wrapper">
+      <h2 class="h2 section-title">Featured Properties</h2>
+    </div>
+ <a href="/more" class="featured-property-link">
+        <span>View more</span>
+      </a>
+    <div class="row">
+
+      <!-- Property Card 1 -->
+      <div class="col-md-4">
+        <div class="featured-property-card">
+          <figure class="card-banner">
+            <img src="https://i.ibb.co/W6BDmFV/house-6.jpg" alt="Property 1" loading="lazy" class="w-100">
+          </figure>
+          <div class="card-content">
+            <h3 class="h3 card-title"><a href="#">Property 1</a></h3>
+            <p class="card-info">Location: XYZ</p>
+            <p class="card-info">Area: 2000 sq.ft.</p>
+            <p class="card-info">Bedrooms: 4</p>
+            <p class="card-info">Bathrooms: 3</p>
+            <p class="card-info">Price: ₹5000</p>
+             <div class="like-section">
+    <button class="like-button" onclick="toggleLike(this)">❤</button>
+    <span class="like-count">0</span>
+</div>
+
+            <button class="btn">Interested</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Property Card 2 -->
+      <div class="col-md-4">
+        <div class="featured-property-card">
+          <figure class="card-banner">
+            <img src="https://i.ibb.co/mvhDwW5/angamaly-house-01.jpg" alt="Property 2" loading="lazy" class="w-100">
+          </figure>
+          <div class="card-content">
+            <h3 class="h3 card-title"><a href="#"></a></h3>
+            <p class="card-info">Location: ABC</p>
+            <p class="card-info">Area: 1800 sq.ft.</p>
+            <p class="card-info">Bedrooms: 3</p>
+            <p class="card-info">Bathrooms: 2</p>
+            <p class="card-info">Price: ₹4000</p>
+           <div class="like-section">
+    <button class="like-button" onclick="toggleLike(this)">❤</button>
+    <span class="like-count">0</span>
+</div>
+
+            <button class="btn">Interested</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Property Card 3 -->
+      <div class="col-md-4">
+        <div class="featured-property-card">
+          <figure class="card-banner">
+            <img src="https://i.ibb.co/CPprTtg/house-3.jpg" alt="Property 3" loading="lazy" class="w-100">
+          </figure>
+          <div class="card-content">
+            <h3 class="h3 card-title"><a href="#">Property 3</a></h3>
+            <p class="card-info">Location: PQR</p>
+            <p class="card-info">Area: 2200 sq.ft.</p>
+            <p class="card-info">Bedrooms: 5</p>
+            <p class="card-info">Bathrooms: 4</p>
+            <p class="card-info">Price: ₹6000</p>
+            <div class="like-section">
+    <button class="like-button" onclick="toggleLike(this)">❤</button>
+    <span class="like-count">0</span>
+</div>
+
+            <button class="btn">Interested</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Second Row -->
+    <div class="row">
+
+      <!-- Property Card 4 -->
+      <div class="col-md-4">
+        <div class="featured-property-card">
+          <figure class="card-banner">
+            <img src="https://i.ibb.co/7CdjbzW/house-5.jpg" alt="Property 4" loading="lazy" class="w-100">
+          </figure>
+          <div class="card-content">
+            <h3 class="h3 card-title"><a href="#">Property 4</a></h3>
+            <p class="card-info">Location: LMN</p>
+            <p class="card-info">Area: 2500 sq.ft.</p>
+            <p class="card-info">Bedrooms: 6</p>
+            <p class="card-info">Bathrooms: 5</p>
+            <p class="card-info">Price: ₹7000</p>
+           <div class="like-section">
+    <button class="like-button" onclick="toggleLike(this)">❤</button>
+    <span class="like-count">0</span>
+</div>
+
+            <button class="btn">Interested</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Property Card 5 -->
+      <div class="col-md-4">
+        <div class="featured-property-card">
+          <figure class="card-banner">
+            <img src="https://i.ibb.co/qnMjVpf/house-4.jpg" alt="Property 5" loading="lazy" class="w-100">
+          </figure>
+          <div class="card-content">
+            <h3 class="h3 card-title"><a href="#">Property 5</a></h3>
+            <p class="card-info">Location: UVW</p>
+            <p class="card-info">Area: 2300 sq.ft.</p>
+            <p class="card-info">Bedrooms: 4</p>
+            <p class="card-info">Bathrooms: 3</p>
+            <p class="card-info">Price: ₹5500</p>
+             <div class="like-section">
+    <button class="like-button" onclick="toggleLike(this)">❤</button>
+    <span class="like-count">0</span>
+</div>
+
+            <button class="btn">Interested</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Property Card 6 -->
+      <div class="col-md-4">
+        <div class="featured-property-card">
+          <figure class="card-banner">
+            <img src="https://i.ibb.co/kmbX2Hm/tiny-home.jpg" alt="Property 6" loading="lazy" class="w-100">
+          </figure>
+          <div class="card-content">
+            <h3 class="h3 card-title"><a href="#">Property 6</a></h3>
+            <p class="card-info">Location: EFG</p>
+            <p class="card-info">Area: 2100 sq.ft.</p>
+            <p class="card-info">Bedrooms: 3</p>
+            <p class="card-info">Bathrooms: 2</p>
+            <p class="card-info">Price: ₹10000</p>
+            <div class="like-section">
+    <button class="like-button" onclick="toggleLike(this)">❤</button>
+    <span class="like-count">0</span>
+</div>
+
+            <button class="btn">Interested</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+</div>
+<div>
+    <ul class="featured-property-list">
+      <li th:each="property : ${properties}">
+        <div class="container">
+          <h1 class="text-center">Properties for Sale</h1>
+          <div class="row">
+            <div class="col-md-4 mb-4">
+              <div class="card">
+                <img th:src="@{${property.propertyImage}}" class="card-img-top" alt="Property Image">
+                <div class="card-body">
+                  <h5 class="card-title" th:text="${property.propertyName}"></h5>
+                  <p class="card-text">Location: <span th:text="${property.location}"></span></p>
+                  <p class="card-text">Area: <span th:text="${property.area}"></span> sq ft</p>
+                  <p class="card-text">Bedrooms: <span th:text="${property.bedrooms}"></span></p>
+                  <p class="card-text">Bathrooms: <span th:text="${property.bathrooms}"></span></p>
+                  <p class="card-text">Nearby Facilities: <span th:text="${property.nearbyFacilities}"></span></p>
+                  <p class="card-text">Price: ₹<span th:text="${property.price}"></span> / month</p>
+                 <div class="property">
+    <div class="like-section">
+    <button class="like-button" onclick="toggleLike(this)">❤</button>
+    <span class="like-count">0</span>
+</div>
+
+</div>
+
+                  </button>
+                  <button class="btn">Rent now</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          </div>
+          </li>
+          </ul>
+  </div>
+</section>
+
+  
+<section class="section blog" id="blogs">
+  <div class="container">
+
+    <h2 class="h2 section-title">Our Blog</h2>
+
+    <div class="blog-carousel">
+      <div class="blog-card">
+
+        <figure class="card-banner">
+          <a href="#">
+            <img src="https://i.ibb.co/WfkxKTY/stock1.jpg" alt="Tips for Finding the Perfect Rental Property" loading="lazy">
+          </a>
+        </figure>
+
+        <div class="card-content">
+          <h3 class="h3 card-title">
+            <a href="#">Tips for Finding the Perfect Rental Property</a>
+          </h3>
+          <div class="card-meta">
+            <time datetime="2022-01-14">January 14, 2022</time>
+            <span class="comments">114 Comments</span>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="blog-card">
+
+        <figure class="card-banner">
+          <a href="#">
+            <img src="https://i.ibb.co/SPXFw2P/stock3.jpg" alt="Understanding Rental Agreements: What You Need to Know" loading="lazy">
+          </a>
+        </figure>
+
+        <div class="card-content">
+          <h3 class="h3 card-title">
+            <a href="#">Understanding Rental Agreements: What You Need to Know</a>
+          </h3>
+          <div class="card-meta">
+            <time datetime="2022-01-14">January 14, 2022</time>
+            <span class="comments">89 Comments</span>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="blog-card">
+
+        <figure class="card-banner">
+          <a href="#">
+            <img src="https://i.ibb.co/d4m65Xv/stock4.jpg" alt="Top Tips for Renting Your First Apartment" loading="lazy">
+          </a>
+        </figure>
+
+        <div class="card-content">
+          <h3 class="h3 card-title">
+            <a href="#">Top Tips for Renting Your First Apartment</a>
+          </h3>
+          <div class="card-meta">
+            <time datetime="2022-01-14">January 14, 2022</time>
+            <span class="comments">102 Comments</span>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="blog-card">
+
+        <figure class="card-banner">
+          <a href="#">
+            <img src="https://i.ibb.co/F0zgDcG/stock6.jpg" alt="What´s required when renting a car?" loading="lazy">
+          </a>
+        </figure>
+
+        <div class="card-content">
+          <h3 class="h3 card-title">
+            <a href="#">What´s required when renting a home?</a>
+          </h3>
+          <div class="card-meta">
+            <time datetime="2022-01-14">January 14, 2022</time>
+            <span class="comments">120 Comments</span>
+          </div>
+        </div>
+
+      </div>
+      <div class="blog-card">
+  <figure class="card-banner">
+    <a href="#">
+      <img  src="https://i.ibb.co/N9XNJBs/stock5.jpg" alt="Top 10 Tips for Renting Your First Apartment" loading="lazy">
+    </a>
+  </figure>
+  <div class="card-content">
+    <h3 class="h3 card-title">
+      <a href="#">Top 10 Tips for Renting Your First Apartment</a>
+    </h3>
+    <div class="card-meta">
+      <time datetime="2022-01-20">January 20, 2022</time>
+      <span class="comments">89 Comments</span>
+    </div>
+  </div>
+</div>
+</section>
+
+ <section id="subscription" class="subscription">
+            <h2>Subscribe to Our Newsletter</h2>
+            <p>Stay updated with the latest rental listings and special offers!</p>
+            <form id="subscribeForm">
+                <input type="email" placeholder="Enter your email address" required>
+                <button type="submit">Subscribe</button>
+            </form>
+        </section>
+        
+        
+    </main>
+    
+    <footer>
+        <p>&copy; 2024 Rentify. All rights reserved.</p>
+    </footer>
+ 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="scripts.js">
+    
+    function displayProperties(propertyList) {
+        var propertyListContainer = document.getElementById("featured-property");
+        propertyListContainer.innerHTML = "";
+        
+        propertyList.forEach(function(property) {
+            var listItem = document.createElement("li");
+            listItem.textContent = property.name + " - " + property.location;
+            propertyListContainer.appendChild(listItem);
+        });
+    }
+
+    function filterProperties(query) {
+        return properties.filter(function(property) {
+            return property.name.toLowerCase().includes(query.toLowerCase()) || 
+                   property.location.toLowerCase().includes(query.toLowerCase());
+        });
+    }
+
+    function searchProperties() {
+        var searchQuery = document.getElementById("searchInput").value;
+        var filteredProperties = filterProperties(searchQuery);
+        displayProperties(filteredProperties);
+    }
+
+    
+    function toggleLike(button) {
+        var likeCount = button.nextElementSibling; 
+        var currentLikes = parseInt(likeCount.textContent);
+        if (button.classList.contains("liked")) {
+            button.classList.remove("liked");
+            likeCount.textContent = currentLikes - 1; 
+        } else {
+            button.classList.add("liked");
+            likeCount.textContent = currentLikes + 1; 
+        }
+    }
+
+    
+    $(document).ready(function() {
+        $('#logout-form').submit(function(e) {
+            e.preventDefault();
+            $.ajax({
+                type: 'POST',
+                url: '/logout',
+                success: function(response) {
+                    window.location.href = '/index';
+                },
+                error: function(xhr, status, error) {
+                    console.error('Failed to logout:', error);
+                }
+            });
+        });
+    });
+
+</script>
+</body>
+</html>

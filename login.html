@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-image: url('https://i.ibb.co/Yjjfkz7/blur.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            margin: 0;
+        }
+        .header {
+         top: 50px;
+    padding: 0; 
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+    background-repeat:no-repeat;
+        }
+        .form-container {
+        	height:230px ;
+            margin-top: 80px;
+            padding: 40px 30px;
+            border: 1px solid #ced4da;
+            border-radius: 5px ;
+            background: white;
+            width: 100%;
+            max-width: 500px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            position: relative;
+            z-index: 2;
+        }
+      
+        .btn-primary {
+            background-color: #007bff;
+            border: none;
+            width: 100%;
+            padding: 10px;
+            font-size: 1.2em;
+        }
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+        .btn-secondary {
+            background-color: #6c757d;
+            border: none;
+            width: 100%;
+            padding: 10px;
+            font-size: 1.2em;
+            margin-top: 10px;
+        }
+        .btn-secondary:hover {
+            background-color: #5a6268;
+        }
+        .form-label {
+            color: #495057;
+            font-size: 1.1em;
+        }
+        .form-control {
+            border: 2px solid #ced4da;
+            border-radius: 0.25rem;
+            font-size: 1.1em;
+            padding: 10px;
+        }
+        footer {
+            background-color: #343a40;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+            margin-top: auto;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="d-flex justify-content-center">
+        <div class="form-container">
+            <form action="/entry" method="post" id="login-form">
+                <div class="form-group">
+                    <input type="email" placeholder="Email" class="form-control" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <input type="password" placeholder="Password" class="form-control" id="password" name="password" required>
+                </div>
+                <div class="form-group mt-4">
+                    <button type="submit" class="btn btn-primary">Login</button>
+                </div>
+            </form>
+            <a href="/signup" class="btn btn-secondary">Sign Up</a>
+        </div>
+        <div class="header">
+                <img src="https://i.ibb.co/qNyFGjh/login-side-removebg-preview-1.png" style="height:500px;"/>
+        </div>
+    </div>
+    
+</div>
+
+
+<footer>
+    <div class="container">
+        <p>&copy; 2024 Rentify. All rights reserved.</p>
+        <p>For inquiries, contact us at info@rentify.com</p>
+    </div>
+</footer>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
